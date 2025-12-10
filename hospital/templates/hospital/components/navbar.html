@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container fw-medium">
+        <a class="navbar-brand" href="{% url 'wards:ward_list' %}">Больница</a>
+        <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item me-2">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'patients:patient_list' %}active{% endif %}"
+                       href="{% url 'patients:patient_list' %}">
+                        <span class="p-2"><i class="bi bi-person-circle me-2"></i>Пациенты</span>
+                    </a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'wards:ward_list' %}active{% endif %}"
+                       href="{% url 'wards:ward_list' %}">
+                        <span class="p-2"><i class="bi bi-hospital me-2"></i>Палаты</span>
+                    </a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'diagnoses:diagnosis_list' %}active{% endif %}"
+                       href="{% url 'diagnoses:diagnosis_list' %}">
+                        <span class="p-2"><i class="bi bi-emoji-dizzy me-2"></i>Диагнозы</span>
+                    </a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link {% if request.resolver_match.view_name == 'wards:ward_stats' %}active{% endif %}"
+                       href="{% url 'wards:ward_stats' %}">
+                        <span class="p-2"><i class="bi bi-bar-chart me-2"></i>Анализ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'hospital:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link">
+                                Выйти из {{ user.username }}
+                            </button>
+                        </form>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

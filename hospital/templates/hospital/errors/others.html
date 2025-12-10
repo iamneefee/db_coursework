@@ -1,0 +1,18 @@
+GNU nano 6.2                                                                            templates/hospital/errors/404.html *
+{% extends "hospital/base.html" %}
+{% block title %}Доступ запрещён{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 60vh;">
+        <div class="card shadow-sm p-4 text-center" style="max-width: 500px; width: 100%;">
+            <div class="mb-3">
+                <i class="bi bi-bug fs-1 text-danger"></i>
+            </div>
+            <h1 class="mb-2">Ошибка</h1>
+            <h4 class="mb-3">Произошла неизвестная ошибка</h4>
+            <a href="/" class="btn btn-primary">
+                <i class="bi bi-house-door me-1"></i> На главную
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "hospital/base.html" %}
+{% block title %}Пациенты{% endblock %}
+
+{% block content %}
+    <div class="container py-4" style="max-width: 600px;">
+        <div class="card shadow-sm p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3>Вы действительно хотите удалить: {{ object.name }}?</h3>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger me-2" type="submit">Удалить</button>
+                <a href="javascript:history.back()" class="btn btn-secondary">
+                    <i class="bi bi-x-circle me-1"></i> Отмена
+                </a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
